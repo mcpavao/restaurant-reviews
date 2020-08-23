@@ -1,0 +1,20 @@
+<%= simple_form_for [@restaurant,@review] do |f| %>
+  <%= f.input :content %>
+  <!-- adds bootstrap button  -->
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+<!-- this will generate a form with action 'reviews' only! -->
+<!-- will return error: undefined method `reviews_path'  -->
+<!-- which is just /reviews and we don't have that in our routes -->
+<!-- in our routes we have: -->
+<!-- /restaurants/:restaurant_id/reviews
+/restaurants/:restaurant_id/reviews/new -->
+<!-- we need action '/restaurants/:id/reviews/new' -->
+
+<!-- we dont have any references added to our restaurant model. We need
+to get the id!! -->
+
+<!-- WHAT TO DO: -->
+<!-- - find restaurant in the reviews controller; -->
+

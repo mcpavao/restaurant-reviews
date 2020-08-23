@@ -71,10 +71,14 @@ CHANGE MODEL -> RELOAD CONSOLE: reload!
 3. rails g controller restaurants
 Here we want to code all the actions we saw in the ROUTE.
 
-ALWAYS REMEMBER THE SEQUENCE:
+## LINKING MODELS WITH FOREIGN KEY
 
-1. Model
+# app/models/restaurant.rb
+class Restaurant < ApplicationRecord
+  has_many :reviews, dependent: :destroy
+end
 
-2. Routes
-3. Controller
-4. View
+# app/models/review.rb
+class Review < ApplicationRecord
+  belongs_to :restaurant
+end

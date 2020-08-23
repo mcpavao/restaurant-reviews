@@ -1,6 +1,15 @@
 <h1><%= @restaurant.name %> <%= '⭐' * @restaurant.rating%></h1>
   <p><%= @restaurant.address%></p>
 
-<%= link_to 'back', restaurants_path %>
-<%= link_to 'edit', edit_restaurant_path(@restaurant) %>
-<%= link_to 'delete', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?'}%>
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.content %></p>
+    <%= link_to 'delete', review_path(review), method: :delete %>
+    <hr>
+  <% end %>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>  |
+<%= link_to 'Delete Restaurant', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?'}%>  |
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+<hr>
+<%= link_to 'Back to restaurants', restaurants_path %>
