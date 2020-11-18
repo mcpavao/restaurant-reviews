@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    # this instance of review is created with validation errors
     @review = Review.new(review_params)
     # we need to associate our review to a restaurant(restaurant_id)
     @review.restaurant = @restaurant
@@ -13,22 +14,25 @@ class ReviewsController < ApplicationController
       redirect_to restaurant_path(@restaurant)
     else
       # we will stay in the create action but will display the template of the new page
-      # the pnly difference is that i am not using the "new" instance of @review, i am 
+      # the pnly difference is that i am not using the "new" instance of @review, i am
       # using the instance of reciew that failed to save.
       # we can look at this instance on rails c using new_review.errors.messages
       # simple form handles that
       # render renders some html, it renders a page
-      # if THE SAVE fails it will render a new page, and what is this new page? 
+      # if THE SAVE fails it will render a new page, and what is this new page?
       # essentially my form.
       # this instance of @review has validations and will show errors
+      # renders the "new" route, a new form
       render :new
     end
   end
 
   def destroy
+    # if we had nested we would have needed: @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to restaurant_path(@review.restaurant)
+    # restaurant show page
+    redirect_to restaurant_path(@review.restaurant) # -> bc we are in the reviews controller
   end
 
   private

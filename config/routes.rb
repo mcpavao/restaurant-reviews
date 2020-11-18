@@ -37,3 +37,6 @@ end
 # it is outside of the nesting because it doesnt need an id
 # of the restaurant. we only nest when we need an id in the url.
 # i dont need a restaurant anymore, all I need is the id of my review
+
+# ONLY NEST COLLECTION ACTIONS!
+# https://guides.rubyonrails.org/routing.html

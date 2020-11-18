@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
   end
 
   def chef
-    #find the restaurant first (before_action)
+    # find the restaurant first (before_action)
     @chef_name = @restaurant.chef_name
   end
 
@@ -22,7 +22,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
-  def create # no view (comes from new view)
+  def create
+    # no view (comes from new view)
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
     redirect_to restaurant_path(@restaurant)
@@ -32,13 +33,15 @@ class RestaurantsController < ApplicationController
     # @restaurant = Restaurant.find(params[:id])
   end
 
-  def update # no view (comes from edit view)
+  def update
+    # no view (comes from edit view)
     # @restaurant = Restaurant.find(params[:id])
     @restaurant.update(restaurant_params)
     redirect_to restaurant_path(@restaurant)
   end
 
-  def destroy # no view (comes from show view)
+  def destroy
+    # no view (comes from show view)
     # @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
     redirect_to restaurants_path
