@@ -6,12 +6,21 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    # we need to associate our review to a restaurant
+    # we need to associate our review to a restaurant(restaurant_id)
     @review.restaurant = @restaurant
     # if not empty due to validations it will save. then:
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
+      # we will stay in the create action but will display the template of the new page
+      # the pnly difference is that i am not using the "new" instance of @review, i am 
+      # using the instance of reciew that failed to save.
+      # we can look at this instance on rails c using new_review.errors.messages
+      # simple form handles that
+      # render renders some html, it renders a page
+      # if THE SAVE fails it will render a new page, and what is this new page? 
+      # essentially my form.
+      # this instance of @review has validations and will show errors
       render :new
     end
   end

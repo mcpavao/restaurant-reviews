@@ -10,6 +10,7 @@ class RestaurantsController < ApplicationController
   end
 
   def chef
+    #find the restaurant first (before_action)
     @chef_name = @restaurant.chef_name
   end
 

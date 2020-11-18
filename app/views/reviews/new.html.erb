@@ -1,9 +1,10 @@
-<%= simple_form_for [@restaurant,@review] do |f| %>
+<%= simple_form_for [@restaurant, @review] do |f| %>
   <%= f.input :content %>
   <!-- adds bootstrap button  -->
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
+<%# simple_form_for [@review] %>
 <!-- this will generate a form with action 'reviews' only! -->
 <!-- will return error: undefined method `reviews_path'  -->
 <!-- which is just /reviews and we don't have that in our routes -->
@@ -18,3 +19,7 @@ to get the id!! -->
 <!-- WHAT TO DO: -->
 <!-- - find restaurant in the reviews controller; -->
 
+<%# 
+Helper	HTTP request
+simple_form_for(@review)	POST reviews_path (does not exist)
+simple_form_for([@restaurant, @review])	POST restaurant_reviews_path %>
