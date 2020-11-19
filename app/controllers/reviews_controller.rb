@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     # restaurant show page
-    redirect_to restaurant_path(@review.restaurant) # -> bc we are in the reviews controller
+    redirect_to restaurant_path(@review.restaurant) # which is the restaurant that belongs to my review
   end
 
   private
