@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :restaurants, only: [:show] do
+  resources :restaurants do
     collection do
       # /restaurants/top
       # get 'top', to: 'restaurants#top', as: :top_restaurants
       # after here, go to controller and code top method
       # get :top # generates '/restaurants/top'
       # get '/balances', to: 'balances#controller'
-      get :balances
+      get :top
     end
 
     member do
