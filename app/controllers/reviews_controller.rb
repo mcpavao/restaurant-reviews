@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
   def destroy
     # if we had nested we would have needed: @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
+    # raise
     @review.destroy
     # restaurant show page
     redirect_to restaurant_path(@review.restaurant) # which is the restaurant that belongs to my review
